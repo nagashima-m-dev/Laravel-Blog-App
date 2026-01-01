@@ -1,7 +1,22 @@
 services:
   app:
-    image: composer:2
+    build: .
     working_dir: /var/www
     volumes:
       - ./backend:/var/www
     command: ["bash", "-lc", "tail -f /dev/null"]
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: laravel_blog
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravelpass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
