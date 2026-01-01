@@ -157,7 +157,6 @@ Docker を利用し、
 ## 開発環境（予定）
 
 - Docker
-  - Laravel
+  - PHP（Laravel）
   - MySQL
-- PHP / Composer
-- Node.js / Vite
+- Node.js / Vite（フロントエンド）
