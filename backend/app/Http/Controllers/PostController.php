@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -14,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = \App\Models\Post::latest()->paginate(10);
+        $posts = Post::latest()->paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -43,7 +42,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(\App\Models\Post $post)
+    public function show(Post $post)
     {
         return view('posts.show', compact('post'));
     }
