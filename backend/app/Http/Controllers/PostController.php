@@ -11,7 +11,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = \App\Models\Post::latest()->get();
+        $posts = \App\Models\Post::latest()->paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -34,9 +34,9 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(\App\Models\Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
     /**
