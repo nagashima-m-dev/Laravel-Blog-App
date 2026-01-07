@@ -1,5 +1,7 @@
 <h1>Posts</h1>
 
+<a href="{{ route('posts.create') }}">新規作成</a>
+
 <ul>
     @forelse ($posts as $post)
         <li>
