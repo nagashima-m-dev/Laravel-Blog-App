@@ -8,11 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// ログイン後のホーム（Breeze標準）
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     // Breeze標準
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
