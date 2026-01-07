@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
 {
@@ -27,17 +29,13 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'body'  => ['required', 'string', 'max:10000'],
-        ]);
-
         // 暫定で user_id=1
-        $validated['user_id'] = 1;
-
-        $post = Post::create($validated);
+        $post = Post::create([
+            'user_id' => 1,
+            ...$request->validated(),
+        ]);
 
         return redirect()->route('posts.show', $post);
     }
@@ -61,12 +59,9 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'body'  => ['required', 'string', 'max:10000'],
-        ]);
+        $validated = $request->validated();
 
         $post->update($validated);
 
