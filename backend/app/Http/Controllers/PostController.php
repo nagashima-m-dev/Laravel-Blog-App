@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -30,9 +31,8 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        // 暫定で user_id=1
         $post = Post::create([
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             ...$request->validated(),
         ]);
 
