@@ -11,7 +11,10 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; // 認証/認可を入れるまでの仮
+        $post = $this->route('post');
+        return $this->user() !== null
+            && $post !== null
+            && $this->user()->id === $post->user_id;
     }
 
     /**
