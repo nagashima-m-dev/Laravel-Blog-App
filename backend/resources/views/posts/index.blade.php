@@ -1,28 +1,27 @@
-<h1>Posts</h1>
+<x-layouts.blog :title="'投稿一覧'">
+    <div class="flex items-end justify-between mb-6">
+        <h1 class="text-3xl font-bold">Posts</h1>
+        <p class="text-sm text-slate-500">全 {{ $posts->total() }} 件</p>
+    </div>
 
-@auth
-    <p>ログイン中：{{ auth()->user()->email }}</p>
+    <div class="space-y-3">
+        @forelse ($posts as $post)
+            <a href="{{ route('posts.show', $post) }}"
+                class="block rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
+                <div class="text-lg font-semibold">{{ $post->title }}</div>
+                <div class="mt-1 text-sm text-slate-500 line-clamp-2">{{ $post->body }}</div>
+                <div class="mt-3 text-xs text-slate-400">
+                    {{ $post->created_at->format('Y/m/d H:i') }}
+                </div>
+            </a>
+        @empty
+            <div class="rounded-2xl border bg-white p-8 text-center text-slate-500">
+                投稿がまだありません
+            </div>
+        @endforelse
+    </div>
 
-    <a href="{{ route('posts.create') }}">新規作成</a>
-
-    <form method="POST" action="{{ route('logout') }}" style="display:inline">
-        @csrf
-        <button type="submit">ログアウト</button>
-    </form>
-@else
-    <p>ゲスト閲覧中</p>
-    <a href="{{ route('login') }}">ログイン</a>
-    <a href="{{ route('register') }}">新規登録</a>
-@endauth
-
-<ul>
-    @forelse ($posts as $post)
-        <li>
-            <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
-        </li>
-    @empty
-        <li>投稿はまだありません</li>
-    @endforelse
-</ul>
-
-{{ $posts->links() }}
+    <div class="mt-8">
+        {{ $posts->links() }}
+    </div>
+</x-layouts.blog>
