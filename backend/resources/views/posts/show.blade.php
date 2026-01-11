@@ -3,26 +3,24 @@
         <div class="rounded-2xl border bg-white p-6 shadow-sm">
             <div class="flex items-start justify-between gap-4">
                 <div>
-                    <h1 class="text-2xl font-bold">{{ $post->title }}</h1>
+                    <h1 class="text-2xl font-bold break-all">{{ $post->title }}</h1>
                     <div class="mt-2 text-sm text-slate-500 space-x-2">
                         <span>{{ $post->created_at->format('Y/m/d H:i') }}</span>
-
-                        {{-- TODO:投稿者表示
                         <span>・</span>
-                        <span>投稿者：{{ $post->user->name ?? '不明' }}</span> --}}
+                        <span>投稿者：{{ $post->user->name ?? '不明' }}</span>
                     </div>
                 </div>
 
                 @auth
                     @if (auth()->id() === $post->user_id)
-                        <div class="flex gap-2">
+                        <div class="flex gap-2 shrink-0">
                             <a href="{{ route('posts.edit', $post) }}"
-                                class="rounded-lg border px-3 py-2 text-sm font-semibold hover:bg-slate-50">
+                                class="rounded-lg border px-3 py-2 text-sm font-semibold hover:bg-slate-50 whitespace-nowrap">
                                 編集
                             </a>
 
                             <button type="button" data-modal-open="delete-modal"
-                                class="rounded-lg bg-rose-600 px-3 py-2 text-sm font-semibold text-white hover:bg-rose-700">
+                                class="rounded-lg bg-rose-600 px-3 py-2 text-sm font-semibold text-white hover:bg-rose-700 whitespace-nowrap">
                                 削除
                             </button>
                         </div>
@@ -30,7 +28,7 @@
                 @endauth
             </div>
 
-            <div class="prose prose-slate mt-6 max-w-none">
+            <div class="prose prose-slate mt-6 max-w-none break-words">
                 {!! nl2br(e($post->body)) !!}
             </div>
 

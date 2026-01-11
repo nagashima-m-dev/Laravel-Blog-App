@@ -8,10 +8,12 @@
         @forelse ($posts as $post)
             <a href="{{ route('posts.show', $post) }}"
                 class="block rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-                <div class="text-lg font-semibold">{{ $post->title }}</div>
-                <div class="mt-1 text-sm text-slate-500 line-clamp-2">{{ $post->body }}</div>
+                <div class="text-lg font-semibold break-all">{{ $post->title }}</div>
+                <div class="mt-1 text-sm text-slate-500 line-clamp-2 break-words">{{ $post->body }}</div>
                 <div class="mt-3 text-xs text-slate-400">
                     {{ $post->created_at->format('Y/m/d H:i') }}
+                    <span>・</span>
+                    <span>投稿者：{{ $post->user->name ?? '不明' }}</span>
                 </div>
             </a>
         @empty

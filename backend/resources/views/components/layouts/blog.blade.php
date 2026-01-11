@@ -20,7 +20,7 @@
                 <div class="flex items-center gap-3">
                     @auth
                         <span class="text-sm text-slate-600">
-                            ログイン中：{{ auth()->user()->email }}様
+                            ログイン中：{{ auth()->user()->name }}様
                         </span>
 
                         <a href="{{ route('posts.create') }}"
