@@ -1,4 +1,4 @@
-# Laravel Blog App（ブログ投稿サイト）
+# アプリ概要・MVP 定義
 
 ## 目的
 
