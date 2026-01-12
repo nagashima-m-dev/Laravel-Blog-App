@@ -9,7 +9,7 @@
         </p>
     </div>
 
-    <form method="POST" action="{{ route('login') }}" class="space-y-4">
+    <form method="POST" action="{{ route('login') }}" novalidate class="space-y-4">
         @csrf
 
         <div>

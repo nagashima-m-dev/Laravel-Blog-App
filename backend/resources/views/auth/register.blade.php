@@ -6,7 +6,7 @@
         </p>
     </div>
 
-    <form method="POST" action="{{ route('register') }}" class="space-y-4">
+    <form method="POST" action="{{ route('register') }}" novalidate class="space-y-4">
         @csrf
 
         <div>

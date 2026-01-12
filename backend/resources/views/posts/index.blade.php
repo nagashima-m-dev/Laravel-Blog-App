@@ -1,6 +1,6 @@
 <x-layouts.blog :title="'投稿一覧'">
     <div class="flex items-end justify-between mb-6">
-        <h1 class="text-3xl font-bold">Posts</h1>
+        <h1 class="text-3xl font-bold">投稿一覧</h1>
         <p class="text-sm text-slate-500">全 {{ $posts->total() }} 件</p>
     </div>
 
