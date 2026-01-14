@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -12,6 +12,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(10);
+
         return view('posts.index', compact('posts'));
     }
 
@@ -38,6 +39,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $this->authorize('update', $post);
+
         return view('posts.edit', compact('post'));
     }
 
@@ -55,6 +57,7 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
         $post->delete();
+
         return redirect()->route('posts.index');
     }
 }

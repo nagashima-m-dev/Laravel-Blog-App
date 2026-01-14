@@ -35,7 +35,7 @@ test('registration max messages are in japanese', function () {
     $this->from('/register')
         ->post('/register', [
             'name' => $tooLong,
-            'email' => $tooLong . '@example.com',
+            'email' => $tooLong.'@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
         ]);

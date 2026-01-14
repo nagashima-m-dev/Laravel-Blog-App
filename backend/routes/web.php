@@ -4,7 +4,7 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 // トップは投稿一覧
-Route::get('/', fn() => redirect()->route('posts.index'));
+Route::get('/', fn () => redirect()->route('posts.index'));
 
 // 公開：未ログインでも閲覧OK
 Route::resource('posts', PostController::class)
@@ -18,4 +18,4 @@ Route::middleware('auth')->group(function () {
         ->whereNumber('post');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
