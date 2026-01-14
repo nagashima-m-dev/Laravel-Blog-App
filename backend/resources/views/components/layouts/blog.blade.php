@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Laravel Blog App' }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if (!app()->environment('testing'))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
 
 <body class="min-h-screen bg-slate-50 text-slate-900">

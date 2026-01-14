@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 test('password can be updated', function () {
+    $this->markTestSkipped('MVPではパスワード更新（プロフィール画面）未対応');
     $user = User::factory()->create();
 
     $response = $this
@@ -23,6 +24,7 @@ test('password can be updated', function () {
 });
 
 test('correct password must be provided to update password', function () {
+    $this->markTestSkipped('MVPではパスワード更新（プロフィール画面）未対応');
     $user = User::factory()->create();
 
     $response = $this
